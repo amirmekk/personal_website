@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
     ),
   );
 
-  bool isLight = true;
+  bool isLight = false;
   int _selectedIndex = 0;
   static List<Widget> tabWidgets = <Widget>[
     AboutPage(),
