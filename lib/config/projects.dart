@@ -11,7 +11,7 @@ List<Project> projects = [
   Project(
       image: Assets.tarikh19,
       name: 'Tarikh19',
-      description: 'Local Educational App',
+      description: 'Local algerian educational app with over 1k loving users',
       link:
           'https://play.google.com/store/apps/details?id=com.tarikh19.tarikh19'),
   Project(
