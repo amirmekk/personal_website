@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:portfolio/config/assets.dart';
 import 'package:portfolio/config/constants.dart';
@@ -36,6 +37,7 @@ class _AboutPageState extends State<AboutPage> {
 
   @override
   Widget build(BuildContext context) {
+    bool isTooSmall = MediaQuery.of(context).size.width < 470;
     return CarouselSlider(
       carouselController: buttonCarouselController,
       options: CarouselOptions(
@@ -71,7 +73,7 @@ class _AboutPageState extends State<AboutPage> {
                       height: 20,
                     ),
                     Text(
-                      'Cross platform app developer using flutter,\n get in touch because I love getting to know new people ',
+                      'Cross-platform app developer,\n get in touch because I love getting to know new people',
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.headline6.copyWith(
                             fontSize: 20,
@@ -199,25 +201,201 @@ class _AboutPageState extends State<AboutPage> {
         ),
         Container(
           child: SingleChildScrollView(
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.only(bottom: 10),
-                child: Column(
-                  children: [
-                    Text('About Me'),
-                    Text(
-                        'Currently persuing pharmaceutical studies in the university of contsantine 03'),
-                    Text(
-                        'Have experience as a front end developer using standard web technologies'),
-                    Text(
-                        'Here are some of the technologies that I have been using recently:'),
-                    Text('Dart'),
-                    Text('Flutter'),
-                    Text('Git + GitHub'),
-                    Text('Javascript + CSS3 + HTML5'),
-                    Text('Firebase')
-                  ],
-                ),
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: Row(
+                children: [
+                  Flexible(
+                    flex: 3,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).size.height * 0.1),
+                            child: Text(
+                              'About Me',
+                              style: GoogleFonts.getFont(
+                                'Poppins',
+                                textStyle: TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                          isTooSmall
+                              ? Padding(
+                                  padding: EdgeInsets.only(bottom: 16.0),
+                                  child: Center(
+                                    child: CircleAvatar(
+                                      radius: 100,
+                                      backgroundImage:
+                                          AssetImage(Assets.avatar),
+                                    ),
+                                  ),
+                                )
+                              : Text(''),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3),
+                            child: Text(
+                              'I\'m a 21 years old Algerian freelancer who uses flutter SDK to build android, IOS, and  web apps, I’ve been using the flutter SDK since its early beta days.',
+                              style: GoogleFonts.getFont(
+                                'Poppins',
+                                textStyle: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3),
+                            child: Text(
+                              'Used to work as a front-end web developer.',
+                              style: GoogleFonts.getFont(
+                                'Poppins',
+                                textStyle: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3),
+                            child: Text(
+                              'Currently pursuing pharmaceutical studies at the University of Constantine.',
+                              style: GoogleFonts.getFont(
+                                'Poppins',
+                                textStyle: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3),
+                            child: Text(
+                              'I like traveling to new places, gaming and reading about tech stuff.',
+                              style: GoogleFonts.getFont(
+                                'Poppins',
+                                textStyle: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3),
+                            child: Text(
+                              'Although my native language is Arabic, I am very good at English and French.',
+                              style: GoogleFonts.getFont(
+                                'Poppins',
+                                textStyle: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3),
+                            child: Text(
+                              'I have worked with many international clients check out some of my previous work in the projects tab below.',
+                              style: GoogleFonts.getFont(
+                                'Poppins',
+                                textStyle: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3),
+                            child: Text(
+                              'Contact me if you’re interested in my services or you want to collaborate on some interesting project or you just want to say hi.',
+                              style: GoogleFonts.getFont(
+                                'Poppins',
+                                textStyle: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 3),
+                            child: Text(
+                              'Here are some of the technologies that I have been using recently:',
+                              style: GoogleFonts.getFont(
+                                'Poppins',
+                                textStyle: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Row(
+                            //  mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(right: 8.0),
+                                child: Text(
+                                  isTooSmall
+                                      ? '· Dart\n· Flutter\n· Javascript + CSS3 + HTML5\n· Git + GitHub\n· Firebase'
+                                      : '· Dart\n· Flutter\n· Javascript + CSS3 + HTML5',
+                                  style: GoogleFonts.getFont(
+                                    'Poppins',
+                                    textStyle: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              isTooSmall
+                                  ? Text('')
+                                  : Text(
+                                      '· Git + GitHub\n· Firebase',
+                                      style: GoogleFonts.getFont(
+                                        'Poppins',
+                                        textStyle: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  isTooSmall
+                      ? Text('')
+                      : Flexible(
+                          flex: 1,
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 8.0),
+                            child: Column(
+                              children: [
+                                CircleAvatar(
+                                  radius: 100,
+                                  backgroundImage: AssetImage(Assets.avatar),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                ],
               ),
             ),
           ),
