@@ -19,4 +19,9 @@ List<Project> projects = [
       name: 'Bibliolater',
       description: 'Social Network For Book Lovers.',
       link: 'https://github.com/amirmekk/Bibliolater-social-network'),
+  Project(
+      image: Assets.todo,
+      name: 'TODO app',
+      description: 'simple todo list app with minimalist modern design.',
+      link: 'https://github.com/amirmekk/To-Do'),
 ];

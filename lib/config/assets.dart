@@ -9,4 +9,5 @@ class Assets {
   static const tarikh19 = 'assets/tarikh19.jpg';
   static const puzzle_store = 'assets/puzzle_store.jpg';
   static const bibliolater = 'assets/bibliolater.jpg';
+  static const todo = 'assets/todo.png';
 }
