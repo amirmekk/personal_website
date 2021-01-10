@@ -37,7 +37,7 @@ class _AboutPageState extends State<AboutPage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isTooSmall = MediaQuery.of(context).size.width < 470;
+    bool isTooSmall = MediaQuery.of(context).size.width < 800;
     return CarouselSlider(
       carouselController: buttonCarouselController,
       options: CarouselOptions(
@@ -229,12 +229,13 @@ class _AboutPageState extends State<AboutPage> {
                           ),
                           isTooSmall
                               ? Padding(
-                                  padding: EdgeInsets.only(bottom: 16.0),
+                                  padding: EdgeInsets.only(bottom: 22.0),
                                   child: Center(
                                     child: CircleAvatar(
-                                      radius: 100,
-                                      backgroundImage:
-                                          AssetImage(Assets.avatar),
+                                      radius: 120,
+                                      backgroundColor: Colors.grey,
+                                      backgroundImage: AssetImage(
+                                          'assets/personal_picture.jpg'),
                                     ),
                                   ),
                                 )
@@ -320,7 +321,7 @@ class _AboutPageState extends State<AboutPage> {
                           Padding(
                             padding: EdgeInsets.symmetric(vertical: 3),
                             child: Text(
-                              'Contact me if you’re interested in my services or you want to collaborate on some interesting project or you just want to say hi.',
+                              'Contact me if you’re interested in my services or you just want to say hi.',
                               style: GoogleFonts.getFont(
                                 'Poppins',
                                 textStyle: TextStyle(
@@ -386,10 +387,13 @@ class _AboutPageState extends State<AboutPage> {
                           child: Padding(
                             padding: EdgeInsets.only(right: 8.0),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 CircleAvatar(
-                                  radius: 100,
-                                  backgroundImage: AssetImage(Assets.avatar),
+                                  radius: 150,
+                                  backgroundColor: Colors.grey,
+                                  backgroundImage:
+                                      AssetImage('assets/personal_picture.jpg'),
                                 ),
                               ],
                             ),
