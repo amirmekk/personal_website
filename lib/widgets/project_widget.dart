@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:html' as html;
+import 'package:universal_html/html.dart' as html;
 import 'package:portfolio/models/project_model.dart';
 
 class ProjectWidget extends StatelessWidget {
