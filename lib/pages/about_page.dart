@@ -316,7 +316,7 @@ class _AboutPageState extends State<AboutPage> {
                                 onPressed: () {
                                   buttonCarouselController.previousPage();
                                 },
-                                icon: Icon(Icons.arrow_circle_up),
+                                icon: Icon(Icons.arrow_upward),
                                 label: Text('back to the top')),
                           )
                         ],
