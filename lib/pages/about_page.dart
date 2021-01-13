@@ -35,6 +35,22 @@ class _AboutPageState extends State<AboutPage> {
     super.dispose();
   }
 
+  Padding styledText(String text) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 3),
+      child: Text(
+        text,
+        style: GoogleFonts.getFont(
+          'Poppins',
+          textStyle: TextStyle(
+            fontSize: 16,
+            color: Colors.grey,
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isTooSmall = MediaQuery.of(context).size.width < 800;
@@ -171,28 +187,28 @@ class _AboutPageState extends State<AboutPage> {
                       height: 20,
                     ),
                     AnimatedContainer(
-                        padding: EdgeInsets.all(10.0),
-                        duration:
-                            Duration(milliseconds: 350), // Animation speed
-                        transform: Transform.translate(
-                          offset: Offset(
-                              0,
-                              up == true
-                                  ? -7
-                                  : 0), // Change -100 for the y offset
-                        ).transform,
-                        child: GestureDetector(
-                          onTap: () {
-                            buttonCarouselController.nextPage();
-                          },
-                          child: Container(
-                            height: 50.0,
-                            child: Icon(
-                              Icons.keyboard_arrow_down,
-                              size: 50,
-                            ),
+                      padding: EdgeInsets.all(10.0),
+                      duration: Duration(milliseconds: 350), // Animation speed
+                      transform: Transform.translate(
+                        offset: Offset(
+                            0,
+                            up == true
+                                ? -7
+                                : 0), // Change -100 for the y offset
+                      ).transform,
+                      child: GestureDetector(
+                        onTap: () {
+                          buttonCarouselController.nextPage();
+                        },
+                        child: Container(
+                          height: 50.0,
+                          child: Icon(
+                            Icons.keyboard_arrow_down,
+                            size: 50,
                           ),
-                        )),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -214,8 +230,9 @@ class _AboutPageState extends State<AboutPage> {
                         children: [
                           Padding(
                             padding: EdgeInsets.only(
-                                bottom:
-                                    MediaQuery.of(context).size.height * 0.1),
+                                bottom: isTooSmall
+                                    ? 20
+                                    : MediaQuery.of(context).size.height * 0.1),
                             child: Text(
                               'About Me',
                               style: GoogleFonts.getFont(
@@ -228,122 +245,40 @@ class _AboutPageState extends State<AboutPage> {
                             ),
                           ),
                           isTooSmall
-                              ? Padding(
-                                  padding: EdgeInsets.only(bottom: 22.0),
-                                  child: Center(
-                                    child: CircleAvatar(
-                                      radius: 120,
-                                      backgroundColor: Colors.grey,
-                                      backgroundImage: AssetImage(
-                                          'assets/personal_picture.jpg'),
+                              ? GestureDetector(
+                                  onVerticalDragUpdate: (info) {
+                                    if (info.delta.dy > 5)
+                                      buttonCarouselController.previousPage();
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.only(bottom: 22.0),
+                                    child: Center(
+                                      child: CircleAvatar(
+                                        radius: 120,
+                                        backgroundColor: Colors.grey,
+                                        backgroundImage: AssetImage(
+                                            'assets/personal_picture.jpg'),
+                                      ),
                                     ),
                                   ),
                                 )
                               : Text(''),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 3),
-                            child: Text(
-                              'I\'m a 21 years old Algerian freelancer who uses flutter SDK to build android, IOS, and  web apps, I’ve been using the flutter SDK since its early beta days.',
-                              style: GoogleFonts.getFont(
-                                'Poppins',
-                                textStyle: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 3),
-                            child: Text(
-                              'Used to work as a front-end web developer.',
-                              style: GoogleFonts.getFont(
-                                'Poppins',
-                                textStyle: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 3),
-                            child: Text(
-                              'Currently pursuing pharmaceutical studies at the University of Constantine.',
-                              style: GoogleFonts.getFont(
-                                'Poppins',
-                                textStyle: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 3),
-                            child: Text(
-                              'I like traveling to new places, gaming and reading about tech stuff.',
-                              style: GoogleFonts.getFont(
-                                'Poppins',
-                                textStyle: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 3),
-                            child: Text(
-                              'Although my native language is Arabic, I am very good at English and French.',
-                              style: GoogleFonts.getFont(
-                                'Poppins',
-                                textStyle: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 3),
-                            child: Text(
-                              'I have worked with many international clients check out some of my previous work in the projects tab below.',
-                              style: GoogleFonts.getFont(
-                                'Poppins',
-                                textStyle: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 3),
-                            child: Text(
-                              'Contact me if you’re interested in my services or you just want to say hi.',
-                              style: GoogleFonts.getFont(
-                                'Poppins',
-                                textStyle: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 3),
-                            child: Text(
-                              'Here are some of the technologies that I have been using recently:',
-                              style: GoogleFonts.getFont(
-                                'Poppins',
-                                textStyle: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
+                          styledText(
+                              'I\'m a 21 years old Algerian freelancer who uses flutter SDK to build android, IOS, and  web apps, I’ve been using the flutter SDK since its early beta days.'),
+                          styledText(
+                              'Used to work as a front-end web developer.'),
+                          styledText(
+                              'Currently pursuing pharmaceutical studies at the University of Constantine.'),
+                          styledText(
+                              'I like traveling to new places, gaming and reading about tech stuff.'),
+                          styledText(
+                              'Although my native language is Arabic, I am very good at English and French.'),
+                          styledText(
+                              'I have worked with many international clients check out some of my previous work in the projects tab below.'),
+                          styledText(
+                              'Contact me if you’re interested in my services or you just want to say hi.'),
+                          styledText(
+                              'Here are some of the technologies that I have been using recently:'),
                           Row(
                             //  mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -351,7 +286,7 @@ class _AboutPageState extends State<AboutPage> {
                                 padding: EdgeInsets.only(right: 8.0),
                                 child: Text(
                                   isTooSmall
-                                      ? '· Dart\n· Flutter\n· Javascript + CSS3 + HTML5\n· Git + GitHub\n· Firebase'
+                                      ? '· Dart\n· Flutter\n· Javascript + CSS3 + HTML5\n· Git + GitHub\n· Firebase\n· Photoshop + Adobe XD'
                                       : '· Dart\n· Flutter\n· Javascript + CSS3 + HTML5',
                                   style: GoogleFonts.getFont(
                                     'Poppins',
@@ -365,7 +300,7 @@ class _AboutPageState extends State<AboutPage> {
                               isTooSmall
                                   ? Text('')
                                   : Text(
-                                      '· Git + GitHub\n· Firebase',
+                                      '· Git + GitHub\n· Firebasen\n· Photoshop + Adobe XD',
                                       style: GoogleFonts.getFont(
                                         'Poppins',
                                         textStyle: TextStyle(
@@ -376,6 +311,14 @@ class _AboutPageState extends State<AboutPage> {
                                     ),
                             ],
                           ),
+                          Center(
+                            child: FlatButton.icon(
+                                onPressed: () {
+                                  buttonCarouselController.previousPage();
+                                },
+                                icon: Icon(Icons.arrow_circle_up),
+                                label: Text('back to the top')),
+                          )
                         ],
                       ),
                     ),
