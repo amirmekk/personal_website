@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:portfolio/config/assets.dart';
 import 'package:portfolio/config/constants.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({Key key}) : super(key: key);
@@ -15,7 +14,7 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
-  CarouselController buttonCarouselController = CarouselController();
+  PageController pageController = PageController();
   bool up = false;
   Timer timer;
 
@@ -54,17 +53,11 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     bool isTooSmall = MediaQuery.of(context).size.width < 800;
-    return CarouselSlider(
-      carouselController: buttonCarouselController,
-      options: CarouselOptions(
-        scrollDirection: Axis.vertical,
-        enableInfiniteScroll: false,
-        initialPage: 0,
-        height: MediaQuery.of(context).size.height,
-        viewportFraction: 1,
-        pageSnapping: true,
-      ),
-      items: [
+    final pageview = PageView(
+      scrollDirection: Axis.vertical,
+      pageSnapping: true,
+      controller: pageController,
+      children: <Widget>[
         Container(
           child: SingleChildScrollView(
             child: Center(
@@ -198,7 +191,9 @@ class _AboutPageState extends State<AboutPage> {
                       ).transform,
                       child: GestureDetector(
                         onTap: () {
-                          buttonCarouselController.nextPage();
+                          pageController.nextPage(
+                              curve: Curves.decelerate,
+                              duration: Duration(milliseconds: 300));
                         },
                         child: Container(
                           height: 50.0,
@@ -248,7 +243,10 @@ class _AboutPageState extends State<AboutPage> {
                               ? GestureDetector(
                                   onVerticalDragUpdate: (info) {
                                     if (info.delta.dy > 5)
-                                      buttonCarouselController.previousPage();
+                                      pageController.previousPage(
+                                          curve: Curves.decelerate,
+                                          duration:
+                                              Duration(milliseconds: 300));
                                   },
                                   child: Padding(
                                     padding: EdgeInsets.only(bottom: 22.0),
@@ -314,7 +312,9 @@ class _AboutPageState extends State<AboutPage> {
                           Center(
                             child: FlatButton.icon(
                                 onPressed: () {
-                                  buttonCarouselController.previousPage();
+                                  pageController.previousPage(
+                                      curve: Curves.decelerate,
+                                      duration: Duration(milliseconds: 300));
                                 },
                                 icon: Icon(Icons.arrow_upward),
                                 label: Text('back to the top')),
@@ -349,5 +349,6 @@ class _AboutPageState extends State<AboutPage> {
         ),
       ],
     );
+    return pageview;
   }
 }
